@@ -22904,7 +22904,7 @@ class MainView extends _reactDefault.default.Component {
                     id: 1,
                     Title: "Inception",
                     Description: "desc1...",
-                    ImagePath: "../../img/Inception.jpeg"
+                    ImagePath: "../Inception.jpeg"
                 },
                 {
                     id: 2,
