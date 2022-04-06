@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 
@@ -7,7 +8,7 @@ class MainView extends React.Component {
     super();
     this.state = {
       movies: [
-        { id: 1, Title: "Inception", Description: "desc1...", ImagePath: "../../img/Inception.jpeg" },
+        { id: 1, Title: "Inception", Description: "desc1...", ImagePath: "../Inception.jpeg" },
         { id: 2, Title: "The Shawshank Redemption", Description: "desc2...", ImagePath: "..." },
         { id: 3, Title: "Gladiator", Description: "desc3...", ImagePath: "..." },
       ],
