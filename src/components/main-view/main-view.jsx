@@ -8,21 +8,13 @@ class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
-      movies: [],
+      movies: [
+        { id: 1, Title: "Inception", Description: "desc1...", ImagePath: "../Inception.jpeg" },
+        { id: 2, Title: "The Shawshank Redemption", Description: "desc2...", ImagePath: "..." },
+        { id: 3, Title: "Gladiator", Description: "desc3...", ImagePath: "..." },
+      ],
       selectedMovie: null,
     };
-  }
-
-  componentDidMount(){
-    axios.get('https://myflixstudio.herokuapp.com/movies')
-      .then(response => {
-        this.setState({
-          movies: response.data
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
   }
 
   setSelectedMovie(newSelectedMovie) {
