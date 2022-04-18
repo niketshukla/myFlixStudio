@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { Row, Col, Form, Button } from 'react-bootstrap';
 
 export function RegistrationView(props) {
     const [ username, setUsername ] = useState('');
@@ -15,24 +16,29 @@ export function RegistrationView(props) {
     };
   
     return (
-      <form>
-        <label>
-          Username:
-          <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-        </label>
-        <label>
-          Password:
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-        </label>
-        <label>
-          Email:
-          <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
-        </label>
-        <label>
-          Birthday:
-          <input type="text" value={birthday} onChange={e => setBirthday(e.target.value)} />
-        </label>
-        <button type="submit" onClick={handleSubmit}>Sign up</button>
-      </form>
+        <Row className='justify-content-md-center'>
+            <Col md={6}>
+                <Form>
+                    <h2>Welcome to My Flix Studio</h2>
+                    <Form.Group controlId="formUserName">
+                        <Form.Label>Username:</Form.Label>
+                        <Form.Control type="text" value={username} placeholder="Enter User Name" onChange={e => setUsername(e.target.value)} required />
+                    </Form.Group>
+                    <Form.Group controlId="formPassword">
+                        <Form.Label>Password:</Form.Label>
+                        <Form.Control type="password" value={password} placeholder="Enter Password" onChange={e => setPassword(e.target.value)} required />
+                    </Form.Group>
+                    <Form.Group controlId="formEmail">
+                        <Form.Label>Email:</Form.Label>
+                        <Form.Control type="email" value={email} placeholder="Enter Email Id" onChange={e => setEmail(e.target.value)} required />
+                    </Form.Group>
+                    <Form.Group controlId="formBirthday">
+                        <Form.Label>Birthday:</Form.Label>
+                        <Form.Control type="text" value={birthday} placeholder="Your Birthdate" onChange={e => setBirthday(e.target.value)} />
+                    </Form.Group>
+                    <Button variant="primary" type="submit" onClick={handleSubmit}>Sign up</Button>
+                </Form>
+            </Col>
+        </Row>
     );
   }
