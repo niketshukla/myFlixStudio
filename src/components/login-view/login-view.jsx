@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
+import "./login-view.scss"
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
@@ -15,7 +16,7 @@ export function LoginView(props) {
 
   return (
     <Row className='justify-content-md-center'>
-      <Col md={6}>
+      <Col md={6} className="form-wrapper">
         <Form>
           <Form.Group controlId="formUsername">
             <Form.Label>Username:</Form.Label>
