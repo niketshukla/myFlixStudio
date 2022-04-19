@@ -1,0 +1,20 @@
+$primary-text: #222;
+$border-color: #ddd;
+$primary-font: 'Roboto Condensed', sans-serif;
+
+.movie-card-wrapper{
+    color: $primary-text;
+    font-family: $primary-font;
+    margin-bottom: 20px;
+}
+.movie-card-wrapper img{
+    height: 300px;
+    object-fit: cover;
+    object-position: top;
+}
+.movie-card-wrapper .card-body p{
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
