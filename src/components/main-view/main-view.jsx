@@ -46,12 +46,12 @@ class MainView extends React.Component {
 
     /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
     if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-    if (user) return <RegistrationView onLoggedIn={user => this.onLoggedIn(user)} />;
+    // if (user) return <RegistrationView onLoggedIn={user => this.onLoggedIn(user)} />;
     // Before the movies have been loaded
     if (movies.length === 0) return <div className="main-view" />;
 
     return (
-      <Row className="main-view justify-content-md-center">
+      <Row className="main-view">
         {selectedMovie
           ? (
             <Col md={6}>
@@ -59,7 +59,7 @@ class MainView extends React.Component {
             </Col>
           )
           : movies.map(movie => (
-            <Col md={3}>
+            <Col md={4}>
               <MovieCard key={movie._id} movie={movie} onMovieClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
             </Col>
           ))

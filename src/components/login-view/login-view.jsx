@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
+import axios from 'axios';
 import "./login-view.scss"
 
 export function LoginView(props) {
@@ -18,6 +19,7 @@ export function LoginView(props) {
     <Row className='justify-content-md-center'>
       <Col md={6} className="form-wrapper">
         <Form>
+          <h3 className='text-center'>Welcome to My Flix Studio</h3>
           <Form.Group controlId="formUsername">
             <Form.Label>Username:</Form.Label>
             <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
