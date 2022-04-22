@@ -22849,7 +22849,7 @@ class MainView extends _reactDefault.default.Component {
                         },
                         __self: this
                     }, movie._id)
-                })
+                }, movie._id)
             )
         }));
     }
@@ -37345,14 +37345,21 @@ function LoginView(props) {
     const [password, setPassword] = _react.useState('');
     const handleSubmit = (e)=>{
         e.preventDefault();
-        console.log(username, password);
-        /* Send a request to the server for authentication */ /* then call props.onLoggedIn(username) */ props.onLoggedIn(username);
+        /* Send a request to the server for authentication */ _axiosDefault.default.post('https://myflixstudio.herokuapp.com/login', {
+            username: username,
+            password: password
+        }).then((response)=>{
+            const data = response.data;
+            props.onLoggedIn(data);
+        }).catch((e1)=>{
+            console.log('no such user');
+        });
     };
     return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Row, {
         className: "justify-content-md-center",
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 19
+            lineNumber: 27
         },
         __self: this,
         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
@@ -37360,13 +37367,13 @@ function LoginView(props) {
             className: "form-wrapper",
             __source: {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 20
+                lineNumber: 28
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form, {
                 __source: {
                     fileName: "src/components/login-view/login-view.jsx",
-                    lineNumber: 21
+                    lineNumber: 29
                 },
                 __self: this,
                 children: [
@@ -37374,7 +37381,7 @@ function LoginView(props) {
                         className: "text-center",
                         __source: {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 22
+                            lineNumber: 30
                         },
                         __self: this,
                         children: "Welcome to My Flix Studio"
@@ -37383,14 +37390,14 @@ function LoginView(props) {
                         controlId: "formUsername",
                         __source: {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 23
+                            lineNumber: 31
                         },
                         __self: this,
                         children: [
                             /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
                                 __source: {
                                     fileName: "src/components/login-view/login-view.jsx",
-                                    lineNumber: 24
+                                    lineNumber: 32
                                 },
                                 __self: this,
                                 children: "Username:"
@@ -37401,7 +37408,7 @@ function LoginView(props) {
                                 ,
                                 __source: {
                                     fileName: "src/components/login-view/login-view.jsx",
-                                    lineNumber: 25
+                                    lineNumber: 33
                                 },
                                 __self: this
                             })
@@ -37411,14 +37418,14 @@ function LoginView(props) {
                         controlId: "formPassword",
                         __source: {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 27
+                            lineNumber: 35
                         },
                         __self: this,
                         children: [
                             /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
                                 __source: {
                                     fileName: "src/components/login-view/login-view.jsx",
-                                    lineNumber: 28
+                                    lineNumber: 36
                                 },
                                 __self: this,
                                 children: "Password:"
@@ -37429,7 +37436,7 @@ function LoginView(props) {
                                 ,
                                 __source: {
                                     fileName: "src/components/login-view/login-view.jsx",
-                                    lineNumber: 29
+                                    lineNumber: 37
                                 },
                                 __self: this
                             })
@@ -37441,7 +37448,7 @@ function LoginView(props) {
                         onClick: handleSubmit,
                         __source: {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 31
+                            lineNumber: 39
                         },
                         __self: this,
                         children: "Submit"
