@@ -29,6 +29,10 @@
 form input {
   margin-bottom: 15px;
 }
+
+.welcome {
+  margin-bottom: 30px;
+}
 .form-wrapper {
   border: 1px solid #ddd;
   margin-top: 150px;
@@ -37,6 +41,10 @@ form input {
 
 form input {
   margin-bottom: 15px;
+}
+
+.welcome {
+  margin-bottom: 30px;
 }
 .my-flix {
   color: steelblue;
