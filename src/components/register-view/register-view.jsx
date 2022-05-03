@@ -1,15 +1,14 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import "./register-view.scss"
 
 export function RegistrationView(props) {
-    const [ name, setName ] = useState('');
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ email, setEmail ] = useState('');
     const [ birthday, setBirthday ] = useState('');
     const [ values, setValues ] = useState({
-        nameErr: '',
         usernameErr: '',
         passwordErr: '',
         emailErr: ''
@@ -17,10 +16,7 @@ export function RegistrationView(props) {
   
     const validate = () => {
         let isReq = true;
-        if(name){
-            setValues({...values, nameErr: 'Name is Required'});
-            isReq = false;
-        }
+
         if(!username){
             setValues({...values, usernameErr: 'Username is Required'});
             isReq = false;
@@ -76,11 +72,6 @@ export function RegistrationView(props) {
             <Col md={6} className="form-wrapper">
                 <Form>
                     <h3 className='text-center welcome'>Welcome to My Flix Studio</h3>
-                    <Form.Group controlId='forName'>
-                        <Form.Label>Name:</Form.Label>
-                        <Form.Control type="text" value={name} onChange={e => setName(e.target.value)} required />
-                        {values.nameErr && <p>{values.nameErr}</p>}
-                    </Form.Group>
                     <Form.Group controlId="formUserName">
                         <Form.Label>Username:</Form.Label>
                         <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} required />
@@ -106,14 +97,12 @@ export function RegistrationView(props) {
             </Col>
         </Row>
     );
-  }
+}
 
-  RegistrationView.propTypes = {
+RegistrationView.propTypes = {
     register: PropTypes.shape({
-        name: PropTypes.string.isRequired,
         username: PropTypes.string.isRequired,
         password: PropTypes.string.isRequired,
         email: PropTypes.string.isRequired
-    }).isRequired,
-    handleSubmit: PropTypes.func.isRequired
-  };
+    }),
+};
