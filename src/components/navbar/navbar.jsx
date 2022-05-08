@@ -1,5 +1,5 @@
 import React from "react";
-import { Nav, Navbar, Container, Button } from 'react-bootstrap';
+import { Nav, Navbar, Container } from 'react-bootstrap';
 
 export function Navbar({ user }) {
     
@@ -26,7 +26,7 @@ export function Navbar({ user }) {
                 <Navbar.Collapse id="navbar-collapse">
                     <Nav className="ml-auto">
                         { isAuth() && (<Nav.Link href={`/users/${user}`}>{user}</Nav.Link>) }
-                        { isAuth() && (<Button variant="link" onClick={() => {this.onLoggedOut()}}>Logout</Button>) }
+                        { isAuth() && (<Nav.Link variant="link" onClick={() => {onLoggedOut()}}>Logout</Nav.Link>) }
                         { !isAuth() && (<Nav.Link href='/'>Login</Nav.Link>) }
                         { !isAuth() && (<Nav.Link href='/register'>Register</Nav.Link>) }
                     </Nav>

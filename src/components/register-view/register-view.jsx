@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import "./register-view.scss"
@@ -42,34 +43,32 @@ export function RegistrationView(props) {
         return isReq;
     }
 
-    const handleSubmit = (e) => {
+    const handleRegister = (e) => {
       e.preventDefault();
       const isReq = validate();
 
       if(isReq){
         /* Send a request to the server for authentication */
-        axios.post('https://myflixstudio.herokuapp.com/login', {
+        axios.post('https://myflixstudio.herokuapp.com/users', {
           username: username,
           password: password,
           email: email,
           birthday: birthday
         })
         .then(response => {
-          const data = response.data;
-          console.log(data);
-          alert('Registration is successful, please login!');
-          window.open('/', '_self');
+            const data = response.data;
+            console.log(data);
+            window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
         })
         .catch(e => {
-          console.error(response);
-          alert('unable to register');
+          console.error('error registering the user');
         });
       }
     };
   
     return (
         <Row className='justify-content-md-center'>
-            <Col md={6} className="form-wrapper">
+            <Col className="form-wrapper">
                 <Form>
                     <h3 className='text-center welcome'>Welcome to My Flix Studio</h3>
                     <Form.Group controlId="formUserName">
@@ -91,7 +90,7 @@ export function RegistrationView(props) {
                         <Form.Label>Birthday:</Form.Label>
                         <Form.Control type="date" name='birthday' onChange={e => setBirthday(e.target.value)} />
                     </Form.Group>
-                    <Button variant="primary" type="submit" onClick={handleSubmit}>Sign Up</Button>
+                    <Button variant="primary" type="submit" onClick={handleRegister}>Sign Up</Button>
                     <p>Already registered <Link to={'/'}>Login</Link> here </p>
                 </Form>
             </Col>

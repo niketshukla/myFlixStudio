@@ -1,13 +1,16 @@
 import React from "react";
 import axios from "axios";
 
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 import { Navbar } from "../navbar/navbar";
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView} from '../register-view/register-view';
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+import { DirectorView } from "../director-view/director-view";
+import { GenreView } from "../genre-view/genre-view";
+import { ProfileView } from "../profile-view/profile-view";
 import {Row, Col} from 'react-bootstrap/';
 
 class MainView extends React.Component {
@@ -61,14 +64,13 @@ class MainView extends React.Component {
       <Router>
         <Navbar user={user} />
         <Row className="main-view justify-content-md-center">
-          <Routes>
             <Route exact path="/" render={() => {
               /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
               if (!user) return <Col>
-                <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+                <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
               </Col>
               // Before the movies have been loaded
-              if (movies.length === 0) return <div className="main-view" />;
+              if (movies.length === 0) return <div className="main-view" />
 
               return movies.map(m => (
                 <Col md={6} key={m._id}>
@@ -83,33 +85,37 @@ class MainView extends React.Component {
               </Col>
             }} />
             <Route path="/movies/:movieId" render={({ match, history }) => {
-              return <Col md={4}>
+              // Before the movies have been loaded
+              if (movies.length === 0) return <div className="main-view" />
+
+              if (!user) return <Col md={4}>
                 <MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()} />
               </Col>
             }} />
             <Route exact path="/genre/:name" render={({ match, history }) => {
-              return <Col>
+              // Before the movies have been loaded
+              if (movies.length === 0) return <div className="main-view" />
+
+              if (!user) return <Col>
                 <GenreView genre={movies.find(m => m._id === match.params.name).genre} onBackClick={() => history.goBack()} />
               </Col>
             }}/>
             <Route exact path="/director/:name" render={({ match, history }) => {
-              return <Col>
+              // Before the movies have been loaded
+              if (movies.length === 0) return <div className="main-view" />
+
+              if (!user) return <Col>
                 <DirectorView director={movies.find(m => m._id === match.params.name).director} onBackClick={() => history.goBack()} />
               </Col>
             }}/>
-            <Route path={`/users/${user}`} render={({ match, history }) => {
-              if (!user) return <Redirect to="/" />
+            <Route exact path='/users/:username' render={({ match, history }) => {
+              if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+
+              if (movies.length === 0) return <div className="main-view" />
               return <Col>
-                <ProfileView movies={movies} user={user} onBackClick={() => history.goBack()} />
+                <ProfileView history={history} movies={movies} user={user === match.params.username} />
               </Col>
-            }} />
-            <Route path={`/user-update/${user}`} render={({ match, history }) => {
-              if (!user) return <Redirect to="/" />
-              return <Col>
-                <UserUpdate user={user} onBackClick={() => history.goBack()} />
-              </Col>
-            }} />
-          </Routes>
+            }}/>
         </Row>
       </Router>
     );
