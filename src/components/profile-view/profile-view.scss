@@ -1,0 +1,26 @@
+$primary-text: #222;
+$border-color: #ddd;
+$primary-font: 'Roboto Condensed', sans-serif;
+
+.profile-info .info-username{
+    text-transform: capitalize;
+}
+.profile-view{
+    color: $primary-text;
+    font-family: $primary-font;
+    margin-bottom: 20px;
+    form input.username{
+        text-transform: capitalize;
+    }
+    form button{
+        margin-right: 15px;
+    }
+}
+.favorite-movie{
+    margin-bottom: 30px;
+    img{
+        height: 300px;
+        object-fit: cover;
+        object-position: top;
+    }
+}
