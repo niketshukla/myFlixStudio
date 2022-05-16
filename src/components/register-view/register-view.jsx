@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import "./register-view.scss"
 
-export function RegistrationView(props) {
+import axios from "axios";
+
+export function RegistrationView() {
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ email, setEmail ] = useState('');
@@ -35,7 +37,7 @@ export function RegistrationView(props) {
         if(!email){
             setValues({...values, emailErr: 'Email is Required'});
             isReq = false;
-        } else if(indexOf('@') === -1) {
+        } else if(email.indexOf('@') === -1) {
             setValues({...values, emailErr: 'Email is invalid'});
             isReq = false;
         }

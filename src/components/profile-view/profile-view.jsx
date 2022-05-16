@@ -173,7 +173,7 @@ export class ProfileView extends React.Component {
                                     </FormGroup>
                                     <FormGroup>
                                         <Form.Label>Birthday</Form.Label>
-                                        <FormControl type="date" name="birthday" value={birthday} onChange={(e) => this.setBirthdaye(e.target.value)} required/> 
+                                        <FormControl type="date" name="birthday" value={birthday} onChange={(e) => this.setBirthday(e.target.value)} required/> 
                                     </FormGroup>
                                     <Button variant="outline-success" type="submit" onClick={this.editUser}>Update</Button> 
                                     <Button variant="outline-danger" onClick={() => this.deleteUser()}>Delete Profile</Button>
