@@ -11,34 +11,32 @@ export function RegistrationView() {
     const [ password, setPassword ] = useState('');
     const [ email, setEmail ] = useState('');
     const [ birthday, setBirthday ] = useState('');
-    const [ values, setValues ] = useState({
-        usernameErr: '',
-        passwordErr: '',
-        emailErr: ''
-    });
+    const [ usernameErr, setUsernameErr ] = useState('');
+    const [ passwordErr, setPasswordErr ] = useState('');
+    const [ emailErr, setEmailErr ] = useState('');
   
     const validate = () => {
         let isReq = true;
 
         if(!username){
-            setValues({...values, usernameErr: 'Username is Required'});
+            setUsernameErr('Username is Required');
             isReq = false;
-        } else if(username.length < 2){
-            setValues({...values, usernameErr: 'Username must be 2 characters long'});
+          } else if(username.length < 5){
+            setUsernameErr('Username must be 5 characters long');
             isReq = false;
         }
         if(!password){
-            setValues({...values, passwordErr: 'Password is Required'});
+            setPasswordErr('Password Required');
             isReq = false;
-        } else if(password.length < 5){
-            setValues({...values, passwordErr: 'Password must be 5 characters long'});
+          } else if(password.length < 5) {
+            setPasswordErr('Password must be 5 characters long');
             isReq = false;
         }
         if(!email){
-            setValues({...values, emailErr: 'Email is Required'});
+            setEmailErr('Email is Required');
             isReq = false;
         } else if(email.indexOf('@') === -1) {
-            setValues({...values, emailErr: 'Email is invalid'});
+            setEmailErr('Email is invalid');
             isReq = false;
         }
       
@@ -76,17 +74,17 @@ export function RegistrationView() {
                     <Form.Group controlId="formUserName">
                         <Form.Label>Username:</Form.Label>
                         <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} required />
-                        {values.usernameErr && <p>{values.usernameErr}</p>}
+                        {usernameErr && <p>{usernameErr}</p>}
                     </Form.Group>
                     <Form.Group controlId="formPassword">
                         <Form.Label>Password:</Form.Label>
                         <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} required />
-                        {values.passwordErr && <p>{values.passwordErr}</p>}
+                        {passwordErr && <p>{passwordErr}</p>}
                     </Form.Group>
                     <Form.Group controlId="formEmail">
                         <Form.Label>Email:</Form.Label>
                         <Form.Control type="email" value={email} onChange={e => setEmail(e.target.value)} required />
-                        {values.emailErr && <p>{values.emailErr}</p>}
+                        {emailErr && <p>{emailErr}</p>}
                     </Form.Group>
                     <Form.Group controlId="formBirthday">
                         <Form.Label>Birthday:</Form.Label>
