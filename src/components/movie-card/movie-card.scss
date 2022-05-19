@@ -15,6 +15,7 @@ $primary-font: 'Roboto Condensed', sans-serif;
 .movie-card-wrapper .card-body p{
     display: -webkit-box;
     overflow: hidden;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
+

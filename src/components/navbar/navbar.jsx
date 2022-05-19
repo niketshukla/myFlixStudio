@@ -1,5 +1,6 @@
 import React from "react";
-import { Nav, Navbar, Container } from 'react-bootstrap';
+import { Nav, Navbar, Container, Row } from 'react-bootstrap';
+import "./navbar.scss";
 
 export function Navbar({ user }) {
     
@@ -19,12 +20,13 @@ export function Navbar({ user }) {
     };
 
     return (
-        <Navbar className="mainNav" sticky="top" expand="lg" bg="light" variant="light">
-            <Container>
+        <Navbar className="mainNav" sticky="top" expand="lg" bg="dark" variant="dark">
+            <Container fluid>
                 <Navbar.Brand className="logo" href="/">MyFlixStudio</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar" />
                 <Navbar.Collapse id="navbar-collapse">
-                    <Nav className="ml-auto">
+                    <Nav className="ml-auto nav-items">
+                        { isAuth() && (<Nav.Link href="/">Movies</Nav.Link>) }
                         { isAuth() && (<Nav.Link href={`/users/${user}`}>{user}</Nav.Link>) }
                         { isAuth() && (<Nav.Link variant="link" onClick={() => {onLoggedOut()}}>Logout</Nav.Link>) }
                         { !isAuth() && (<Nav.Link href='/'>Login</Nav.Link>) }

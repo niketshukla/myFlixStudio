@@ -52,7 +52,7 @@ export function LoginView(props) {
 
   return (
     <Row className='justify-content-md-center'>
-      <Col md={6} className="form-wrapper">
+      <Col md={4} className="form-wrapper">
         <Form>
           <h3 className='text-center welcome'>Welcome to My Flix Studio</h3>
           <Form.Group controlId="formUsername">
@@ -67,7 +67,7 @@ export function LoginView(props) {
             {/* code added here to display validation error */}
             {passwordErr && <p>{passwordErr}</p>}
           </Form.Group>
-          <Button variant="primary" type="submit" onClick={handleSubmit}>Login</Button>
+          <Button variant="outline-primary" type="submit" onClick={handleSubmit}>Login</Button>
         </Form>
       </Col>
     </Row>  

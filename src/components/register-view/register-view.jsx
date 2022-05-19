@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import "./register-view.scss"
 
-export function RegistrationView(props) {
+import axios from "axios";
+
+export function RegistrationView() {
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ email, setEmail ] = useState('');
@@ -35,7 +37,7 @@ export function RegistrationView(props) {
         if(!email){
             setValues({...values, emailErr: 'Email is Required'});
             isReq = false;
-        } else if(indexOf('@') === -1) {
+        } else if(email.indexOf('@') === -1) {
             setValues({...values, emailErr: 'Email is invalid'});
             isReq = false;
         }
@@ -68,7 +70,7 @@ export function RegistrationView(props) {
   
     return (
         <Row className='justify-content-md-center'>
-            <Col className="form-wrapper">
+            <Col md={4} className="form-wrapper">
                 <Form>
                     <h3 className='text-center welcome'>Welcome to My Flix Studio</h3>
                     <Form.Group controlId="formUserName">
@@ -90,7 +92,7 @@ export function RegistrationView(props) {
                         <Form.Label>Birthday:</Form.Label>
                         <Form.Control type="date" name='birthday' onChange={e => setBirthday(e.target.value)} />
                     </Form.Group>
-                    <Button variant="primary" type="submit" onClick={handleRegister}>Sign Up</Button>
+                    <Button variant="outline-primary" type="submit" onClick={handleRegister}>Sign Up</Button>
                     <p>Already registered <Link to={'/'}>Login</Link> here </p>
                 </Form>
             </Col>
