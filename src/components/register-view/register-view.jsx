@@ -68,7 +68,7 @@ export function RegistrationView() {
   
     return (
         <Row className='justify-content-md-center'>
-            <Col md={4} className="form-wrapper">
+            <Col md={5} className="form-wrapper">
                 <Form>
                     <h3 className='text-center welcome'>Welcome to My Flix Studio</h3>
                     <Form.Group controlId="formUserName">
