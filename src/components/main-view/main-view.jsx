@@ -33,7 +33,7 @@ class MainView extends React.Component {
   }
 
   onLoggedIn(authData) {
-    // const { setUser } = this.props;
+    const { setUser } = this.props;
     setUser(authData.user.username);
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.username);
