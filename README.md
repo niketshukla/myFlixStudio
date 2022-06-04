@@ -30,7 +30,7 @@ Using React, build the client-side for an application called myFlix based on its
 
 ## Get Started
 
-- Clone the [project](git@github.com:niketshukla/myFlixStudio.git)
+- Clone the [project](https://github.com/niketshukla/myFlixStudio.git)
 - Install all dependencies mentioned in package.json
 - cd to the project directory
 - Run it by:
