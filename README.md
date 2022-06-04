@@ -43,4 +43,8 @@ Note: Please make sure you install parcel v2!
 
 ## To run the Project
 
-You can use the command: parcel src/index.html
+You can use the command: 
+
+```bash
+parcel src/index.html
+```
