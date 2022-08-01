@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { setMovies, setUser } from '../../actions/actions';
 import MoviesList from '../movie-list/movie-list';
 
-import { Navbar } from "../navbar/navbar";
+import { Navigation } from "../navbar/navbar";
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView} from '../register-view/register-view';
 import { MovieView } from "../movie-view/movie-view";
@@ -58,7 +58,7 @@ class MainView extends React.Component {
     
     return (
       <Router>
-        <Navbar user={user} />
+        <Navigation user={user} />
         <Container >
           <Row className="main-view">
               <Route exact path="/" render={() => {
